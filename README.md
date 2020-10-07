@@ -76,7 +76,7 @@ Nasledujúca postupnosť krokov sa bude opakovať ako je naznačené v kroku 7 a
 
 Flow procesu pre jednu vzorku článku nájdete na nasledujúcom obrázku, kde je zobrazené, že nemusia sa opakovať všetky kroky, ale iba krok aktualizovania gazeteeru. Taktiež ukazuje, že najprv plánujeme vyhľadávať štatistickou metódou iba na základe slov, ktorú budeme vylepšovať a až následne sa budeme zameriavať na metódu Anchor článkov a prípadne aj porovnať ich presnosť. 
 
-![Flow Diagram](https://github.com/tomasbabjak/VINF_Wikipedia/blob/master/diagram.png?raw=true)
+![Flow Diagram](https://github.com/tomasbabjak/VINF_Wikipedia/blob/main/diagram.png?raw=true)
 
 ##### Krok 1: Zoznam spoločensko-vedných oblastí, do ktorých budeme jednotlivé stránky zaraďovať ===
 
