@@ -65,14 +65,18 @@ Po rozbalení komprimovaného súboru môžeme začať s jeho spracovaním, potr
 
 Nasledujúca postupnosť krokov sa bude opakovať ako je naznačené v kroku 7 a 8 a samozrejme ešte sa môže zmeniť, doplniť nejaké operácie nad dátami alebo niektoré zrušiť:
 
-1. Vytvoriť zoznam (strom) spoločensko-vedných oblastí, do ktorých budeme jednotlivé stránky zaraďovať, ku každej oblasti nájsť aj slová, ktoré sa s ňou spájajú
-2. Vytvoriť testovaciu vzorku dát, na ktorej budeme prvotne projekt realizovať
+1. Vytvoriť testovaciu vzorku dát, na ktorej budeme prvotne projekt realizovať
+2. Vytvoriť zoznam (strom) spoločensko-vedných oblastí, do ktorých budeme jednotlivé stránky zaraďovať, ku každej oblasti nájsť aj slová, ktoré sa s ňou spájajú
 3. Články vhodne predspracovať - stemming, tokenizácia, odstránenie stop slov
 4. Z článkov testovacej sady vyhľadať dôležité pojmy - zamerať sa na Infobox, kde sa nachádzajú dôležité informácie o článku
-5. Z tela článku vyhľadať najčastejšie používané termy a tie, ktoré boli identifikované v kroku 1
-6. Vyhľadať odkazy na iné články wikipédie (anchor text), ktorú môžu smerovať priamo na oblasť alebo aspoň priblížiť kontext článku
-7. Na základe získaných údajov z predošlých krokov vyhodnotiť úspešnosť riešenia testovacej sady a podľa toho prejsť všetky kroky od 3 po 6 a vylepšiť ich
+5. Vyhľadať odkazy na iné články Wikipédie (anchor text), ktoré môžu smerovať priamo na oblasť alebo aspoň priblížiť kontext článku
+6. Z tela článku vyhľadať najčastejšie používané termy a tie, ktoré boli identifikované v ''kroku 2''
+7. Na základe získaných údajov z predošlých krokov, teda slov z Infoboxov, textu článku a podľa Anchor textov vyhodnotiť úspešnosť riešenia testovacej sady a podľa toho prejsť kroky ''od 3 po 6'' a vylepšiť ich
 8. Následne túto metódu použiť na celej vzorke článkov a vyhodnotiť relatívnu úspešnosť a znova zopakovať predošlé kroky za účelom jej zvýšenia.
+
+Flow procesu pre jednu vzorku článku nájdete na nasledujúcom obrázku, kde je zobrazené, že nemusia sa opakovať všetky kroky, ale iba krok aktualizovania gazeteeru. Taktiež ukazuje, že najprv plánujeme vyhľadávať štatistickou metódou iba na základe slov, ktorú budeme vylepšovať a až následne sa budeme zameriavať na metódu Anchor článkov a prípadne aj porovnať ich presnosť. 
+
+
 
 ##### Krok 1: Zoznam spoločensko-vedných oblastí, do ktorých budeme jednotlivé stránky zaraďovať ===
 
