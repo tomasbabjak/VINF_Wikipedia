@@ -96,3 +96,26 @@ Flow procesu pre jednu vzorku článku nájdete na nasledujúcom obrázku, kde j
   
 #### Použité nástroje a frameworky:
 GitHUb, Jupyter Notebook, Python, PySpark a ďalšie Python knižnice
+
+#### Konzultácia č. 3
+
+  * Vytvorenie testovacej vzorky dát
+  * Extrahovanie nadpisu a textu článku
+  * Nájdenie Infoboxov a Anchor textov z textu článku
+  * Oddelenie Redirect článkov od plnohodnotných článkov
+  * Vytvorenie kategórii
+  * Vytvorenie gazeteerov pre jednotlivé kategórie pomocou Datamuse
+  * Exact match priradenie kategórii k článkom podľa slov v gazeteeroch
+  
+#### Konzultácia č. 4
+
+  * Extrahovanie //Category// poľa z článkov
+  * Rozbitie vlastných kategórii na menšie jednoslovné kategórie
+  * Úprava gazeteerov - Datamuse
+  * Spracovanie článkov Wikipédie s rovnakým názvom ako má moja kategória a vytvorenie gazeteeru
+  * Tokenizácia, Stemming a odstránenie stop slov z článkov
+  * Predspracovanie slov v gazeteeroch
+  * TF-IDF model nad slovami v gazeteeroch
+  * Kosínusová podobnosť s kategorickými a testovacími článkami
+  * Skúsiť Spark - pyspark na rýchlejšie spracovanie
+  
