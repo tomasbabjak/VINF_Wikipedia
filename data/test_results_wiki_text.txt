@@ -1,0 +1,77 @@
+                                          Anchor  Categories  Infobox   Text  \
+Anarchism                                   0.00       25.00     0.00   0.00   
+Autism                                      0.00        0.00     0.00   0.00   
+Albedo                                      0.00        0.00     0.00   0.00   
+A                                           0.00        0.00     0.00   0.00   
+Alabama                                     0.00        0.00     0.00   0.00   
+Achilles                                    0.00        0.00     0.00   0.00   
+Abraham Lincoln                            20.00       40.00     0.00   0.00   
+Aristotle                                  14.29       14.29    14.29  14.29   
+An American in Paris                        0.00        0.00     0.00  25.00   
+Academy Award for Best Production Design    0.00        0.00    33.33  33.33   
+Academy Awards                              0.00        0.00     0.00   0.00   
+Actrius                                     0.00        0.00     0.00   0.00   
+Animalia (book)                             0.00        0.00     0.00   0.00   
+International Atomic Time                   0.00        0.00     0.00   0.00   
+Altruism                                    0.00        0.00     0.00  33.33   
+Ayn Rand                                    0.00        0.00     0.00   0.00   
+Alain Connes                                0.00        0.00     0.00   0.00   
+Allan Dwan                                  0.00        0.00     0.00   0.00   
+Algeria                                     0.00        0.00     0.00   0.00   
+List of Atlas Shrugged characters           0.00        0.00     0.00   0.00   
+Anthropology                               20.00       40.00     0.00  20.00   
+Agricultural science                        0.00        0.00     0.00   0.00   
+Alchemy                                     0.00        0.00     0.00   0.00   
+Alien                                       0.00        0.00     0.00   0.00   
+Astronomer                                  0.00        0.00     0.00   0.00   
+ASCII                                       0.00        0.00     0.00   0.00   
+Austin (disambiguation)                     0.00        0.00     0.00   0.00   
+Animation                                   0.00        0.00     0.00   0.00   
+Apollo                                      0.00        0.00     0.00   0.00   
+Andre Agassi                                0.00        0.00    50.00  50.00   
+
+                                            All  
+Anarchism                                 25.00  
+Autism                                     0.00  
+Albedo                                     0.00  
+A                                          0.00  
+Alabama                                    0.00  
+Achilles                                   0.00  
+Abraham Lincoln                           40.00  
+Aristotle                                 14.29  
+An American in Paris                      25.00  
+Academy Award for Best Production Design  33.33  
+Academy Awards                             0.00  
+Actrius                                    0.00  
+Animalia (book)                            0.00  
+International Atomic Time                  0.00  
+Altruism                                  33.33  
+Ayn Rand                                   0.00  
+Alain Connes                               0.00  
+Allan Dwan                                 0.00  
+Algeria                                    0.00  
+List of Atlas Shrugged characters          0.00  
+Anthropology                              40.00  
+Agricultural science                       0.00  
+Alchemy                                    0.00  
+Alien                                      0.00  
+Astronomer                                 0.00  
+ASCII                                      0.00  
+Austin (disambiguation)                    0.00  
+Animation                                  0.00  
+Apollo                                     0.00  
+Andre Agassi                              50.00  
+          Anchor  Categories    Infobox       Text        All
+count  30.000000   30.000000  30.000000  30.000000  30.000000
+mean    1.809667    3.976333   3.254000   5.865000   8.698333
+std     5.589267   11.071659  10.981862  13.023897  15.653745
+min     0.000000    0.000000   0.000000   0.000000   0.000000
+25%     0.000000    0.000000   0.000000   0.000000   0.000000
+50%     0.000000    0.000000   0.000000   0.000000   0.000000
+75%     0.000000    0.000000   0.000000   0.000000  10.717500
+max    20.000000   40.000000  50.000000  50.000000  50.000000
+
+Average of All column:  8.7
+Precision:  0.5300739137853476
+Recall:  0.12643678160919541
+F1: 0.0531570919501954

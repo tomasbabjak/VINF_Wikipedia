@@ -1,0 +1,77 @@
+                                          Anchor  Categories  Infobox    Text  \
+Anarchism                                  25.00       75.00     0.00   50.00   
+Autism                                     66.67        0.00    33.33    0.00   
+Albedo                                      0.00        0.00     0.00    0.00   
+A                                          50.00        0.00    50.00    0.00   
+Alabama                                     0.00        0.00     0.00    0.00   
+Achilles                                    0.00       66.67     0.00   66.67   
+Abraham Lincoln                            40.00       40.00    20.00   20.00   
+Aristotle                                  57.14       57.14    57.14   42.86   
+An American in Paris                       50.00       25.00     0.00   50.00   
+Academy Award for Best Production Design   66.67       66.67    66.67   66.67   
+Academy Awards                             66.67       66.67    66.67   66.67   
+Actrius                                     0.00      100.00   100.00  100.00   
+Animalia (book)                           100.00      100.00   100.00  100.00   
+International Atomic Time                   0.00        0.00     0.00    0.00   
+Altruism                                   33.33       66.67     0.00   33.33   
+Ayn Rand                                   33.33       33.33     0.00   66.67   
+Alain Connes                               33.33       33.33    66.67   33.33   
+Allan Dwan                                100.00      100.00   100.00  100.00   
+Algeria                                     0.00        0.00     0.00    0.00   
+List of Atlas Shrugged characters           0.00      100.00     0.00  100.00   
+Anthropology                               40.00        0.00     0.00   60.00   
+Agricultural science                       50.00       25.00     0.00   75.00   
+Alchemy                                    50.00        0.00     0.00    0.00   
+Alien                                      25.00        0.00     0.00   25.00   
+Astronomer                                 66.67       66.67     0.00   33.33   
+ASCII                                      50.00       50.00     0.00   25.00   
+Austin (disambiguation)                     0.00        0.00     0.00    0.00   
+Animation                                  66.67       66.67     0.00   33.33   
+Apollo                                      0.00        0.00     0.00   33.33   
+Andre Agassi                                0.00        0.00     0.00   50.00   
+
+                                             All  
+Anarchism                                  75.00  
+Autism                                     66.67  
+Albedo                                      0.00  
+A                                          50.00  
+Alabama                                     0.00  
+Achilles                                   66.67  
+Abraham Lincoln                            60.00  
+Aristotle                                  85.71  
+An American in Paris                       50.00  
+Academy Award for Best Production Design  100.00  
+Academy Awards                             66.67  
+Actrius                                   100.00  
+Animalia (book)                           100.00  
+International Atomic Time                   0.00  
+Altruism                                   83.33  
+Ayn Rand                                   66.67  
+Alain Connes                               66.67  
+Allan Dwan                                100.00  
+Algeria                                     0.00  
+List of Atlas Shrugged characters         100.00  
+Anthropology                               60.00  
+Agricultural science                      100.00  
+Alchemy                                    50.00  
+Alien                                      25.00  
+Astronomer                                100.00  
+ASCII                                      50.00  
+Austin (disambiguation)                     0.00  
+Animation                                 100.00  
+Apollo                                     33.33  
+Andre Agassi                               50.00  
+           Anchor  Categories     Infobox        Text         All
+count   30.000000   30.000000   30.000000   30.000000   30.000000
+mean    35.682667   37.960667   22.016000   41.039667   60.190667
+std     30.835777   37.092951   35.267161   33.742612   34.684756
+min      0.000000    0.000000    0.000000    0.000000    0.000000
+25%      0.000000    0.000000    0.000000    5.000000   50.000000
+50%     36.665000   33.330000    0.000000   33.330000   66.670000
+75%     55.355000   66.670000   45.832500   66.670000   96.427500
+max    100.000000  100.000000  100.000000  100.000000  100.000000
+
+Average of All column:  60.19
+Precision:  0.48585954275609444
+Recall:  0.6436781609195402
+F1: 0.5077648405234612
