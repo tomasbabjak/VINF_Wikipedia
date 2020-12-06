@@ -77,25 +77,72 @@ Nasledujúca postupnosť krokov sa bude opakovať ako je naznačené v kroku 7 a
 Flow procesu pre jednu vzorku článku nájdete na nasledujúcom obrázku, kde je zobrazené, že nemusia sa opakovať všetky kroky, ale iba krok aktualizovania gazeteeru. Taktiež ukazuje, že najprv plánujeme vyhľadávať štatistickou metódou iba na základe slov, ktorú budeme vylepšovať a až následne sa budeme zameriavať na metódu Anchor článkov a prípadne aj porovnať ich presnosť. 
 
 ![Flow Diagram](https://github.com/tomasbabjak/VINF_Wikipedia/blob/main/diagram.png?raw=true)
-
-##### Krok 1: Zoznam spoločensko-vedných oblastí, do ktorých budeme jednotlivé stránky zaraďovať ===
-
-  * Literature - General reference
-  * Culture and the arts
-  * Geography and places and states
-  * Health and fitness and medicine
-  * History and events
-  * Human activities
-  * Mathematics and logic
-  * Natural and physical sciences
-  * People and self
-  * Philosophy and thinking
-  * Religion and belief systems
-  * Society and social sciences
-  * Technology and applied sciences
   
 #### Použité nástroje a frameworky:
 GitHUb, Jupyter Notebook, Python, PySpark a ďalšie Python knižnice
+  
+#### Popis projektu 
+
+V tomto projektu skúmame kategorizovanie článkov anglickej Wikipédie do vlastných kategórií, pričom porovnávame rôzne prístupy k trénovaniu modelu. Hlavnou motiváciou k tejto práci bolo sprehľadnenie článkov Wikipédie a ich zatriedenie do rôznych kategórií za účelom rýchlejšej orientácie a vyhľadávania medzi nimi. Taktiež sme chceli použiť čo najúčinnejší spôsob spracovania článkov, ako aj trénovania modelov, pričom používame často využívaný TF-IDF model a na vyhľadanie vektorovej vzdialenosti kosínusovú podobnosť. 
+
+Ďalším zámerom tohto projektu bolo zistiť, ktorá časť článkov Wikipédie najlepšie vystihuje článok a teda pomocou ktorej dokážeme najpresnejšie zaradiť článok do kategórie. Konkrétne sme vybrali na porovnanie 4 črty článku a to infoboxy, teda stručné zhrnutia článkov, anchor texty, teda texty nachádzajúce sa pri odkazoch na iné články Wikipédie, vlastné kategórie Wikipédie a samotné texty článkov. Pre každú z týchto čŕt sme vytvorili osobitný natrénovaný model pozostávajúci z článkov Wikipédie s rovnakým názvom ako naše kategórie a vyhodnotili úspešnosť s trénovacou skupinou článkov. 
+
+#### Existujúce riešenia 
+
+Analyzované súčasné riešenia tejto problematiky sa zameriavajú výhradne na kategorizovanie článkov do tzv. menných entít, ako napríklad osoba, miesto, spoločnosť a podobne. Je to spôsobené najmä tým, že už samotná Wikipédia obsahuje vlastné kategórie, do ktorých jednotlivé články zaradzuje. V tomto projekte sme sa snažili vytvoriť náhradu tejto kategorizácia pomocou vlastnej techniky. 
+
+Podobné práce zaoberajúce sa kategorizovaním článkov je napríklad od Shavarani et al. [1], kde sa snažia kategorizovať články Wikipédie v piatich rôznych jazykoch, pričom okrem tradičných metód normalizácie a tokenizácie používajú na určenie kategórií neurónové siete. Podobnou prácou je aj tá od Higashinaka et al. [2], v ktorej autori vytvorili dokonca 200 typov menných entít, do ktorých zaradzovali články Wikipédie. 
+
+#### Popis riešenia 
+
+Pri riešení projektu sme sa viac menej držali postupu riešenia, ktorý sme načrtli v časti Návrh riešenia.
+
+##### Extrahovanie a parsovanie článkov 
+
+Prvým krokom riešenia bolo vytvoriť testovaciu vzorku dát. Dáta sme testovali na vzorke 30 článkov zo začiatku Wikipédie. Na týchto dátach sme dokázali prejsť všetkými fázami projektu, aj tými náročnejšími na výpočtový výkon, ako bolo napríklad spracovanie textu článku. Túto vstupnú, ako aj výstupnú vzorku dát nájdete aj priloženú pri tomto projekte vo forme zip adresára.
+
+Extrahovanie textov všetkých článkov prebiehalo pomocou čítania vstupného XML súboru po riadku a pomocou regex výrazov sme vyhľadávali <page> tagy a podľa nich sme text delili na články. Z týchto článkov sme podobným spôsobom vyhľadávali aj názvy článkov, texty a v nich anchor texty, kategórie a infoboxy obdobne pomocou regex výrazov. Od článkov sme následne oddelili redirect, teda články slúžiace na presmerovanie, ktoré pre nás v tomto projekte nemali priamy význam, takže sme s nimi už ďalej nepracovali.
+
+##### Vytvorenie gazeteerov 
+
+Taktiež sme vytvorili zoznam spoločensko-vedných oblastí do ktorých sme jednotlivé stránky zaradzovali, tento zoznam nájdete tiež ako prílohu k tomuto dokumentu. Pri vytváraní tohto zoznamu sme postupovali iteratívne, najprv sme vytvorili menší zoznam so siedmymi kategóriami, avšak to nám dostatočne nepostačovalo, takže sme ho rozšírili o ďalšie, až sme získali zoznam s 30 kategóriami, avšak aj v tomto zozname ešte stále  môžu chýbať niektoré kategórie, na ktoré sme zabudli.
+
+Ku každej kategórii sme priradili slová a tak vytvorili gazeteer a to hneď dvoma spôsobmi:
+
+  * pomocou Datamuse knižnice, ktorá priradzuje k jednotlivým slovám ich vektorovo najbližšie záznamy z ich databázy slov, následne sme takto nájdené výrazy tokenizovali a upravili tak, aby bol pri každej kategórii rovnaký počet slov
+  * pomocou článkov Wikipédie s rovnakým názvom ako kategória. Týmto spôsobom sme vytvorili až štyri gazeteere, na základe slov v infoboxoch, anchor textov, vlastných Wikipédia kategórií a samozrejme textov týchto článkov
+
+##### Predspracovanie textov 
+
+Slová v gazeteeroch ako aj všetky trénovacie a testovacie články sme predspracovali rovnako. Na stemming slov sme použili Porterov stemmer, na tokenizáciu textov sme využili word_tokenizer knižnice NLTK a následne sme odstránili nepoužiteľné tokeny ako aj stop slová. 
+
+##### Trénovanie a testovanie modelov
+
+Na natrénovanie TF-IDF modelov sme použili všetky štyri trénovacie gazeteery a vlastné funkcie s pomocou knižnice scikit-learn a jej tried. 
+
+Následne sme vykonávali testovanie modelov a to pomocou kosínusovej podobnosti, teda tak, že sme vektorizovali testovacie články podobne ako aj testovacie a vypočítavali sme ich kosínusovú podobnosť k článkom trénovacím za pomoci TF-IDF modelu. Túto podobnosť sme vypočítavali pre všetky 4 časti článku, teda infoboxy, anchor texty, kategórie a texty.
+
+##### Indexácia a vyhľadávanie 
+
+Za účelom vyhľadávania medzi článkami sme vytvorili vlastný invertovaný index pomocou hash mapy, teda defaultdict, pričom sme pridali aj možnosť vyhľadávať pomocou viacerých termov zároveň ako aj možnosť či chceme aby sa dané termy v článku vyskytovali súčasne alebo aspoň jeden z nich. Hľadané slová sú následne predspracované rovnako ako aj ostané články predtým a vyhľadané v indexe.   
+
+#### Testovanie a vyhodnotenie 
+
+Najprv sme testovali kategorické články Wikipédie, na ktorých sme si skúšali funkčnosť našich natrénovaných modelov. Následne sme testovali všetkých 30 článkov testovacej množiny. Tie sme najprv manuálne anotovali, teda priradili sme im kategórie, ktoré sme považovali za vhodné a až potom sme ich nechali ohodnotiť modelom. Rozdiel medzi našim ohodnotením, ktoré sme brali ako "ground truth", a ohodnotením natrénovaným modelom sme porovnali a vypočítali pre každý článok a pre každú porovnávanú črtu percentuálnu úspešnosť priradenia kategórie, a pre celý testovací korpus taktiež priemer, presnosť, úplnosť a F1 štatistiky. Testovali sme 4 modely, natrénoavané pomocou gazeteeru Datamuse, infoboxov, kategórií a textov Wikipédia kategorických článkov. Celé výsledky a štatistiky všetkých trénovaných modelov nájdete v prílohe k tomuto dokumentu.
+
+Na základe vyhodnotenia testovacej sady článkov sme zistili, že najúspešnejšou metódou - gazeteerom bol Datamuse model, teda s vektorovo blízkymi slovami, ktorého priemernou úspešnosťou zistenia kategórii 60%, presnosťou 0.49, pokrytím 0.64 a metrikou F1 0.5, pričom iba o čosi menej úspešná bola aj metóda natrénovaná pomocou Infoboxov kategorických článkov s úspešnosťou 49%, presnosťou 0.58, pokrytím 0.49 a metrikou F1 na úrovni 0.47. 
+
+Ostatné 2 metódy mali neporovnateľne slabšie výsledky, čo sa týka metódy trénovanej na kategóriách, tam bola príčinou nízky počet slov pre jednotlivé články a teda aj riedka matica, zatiaľ čo pri metóde trénovanej na textoch článkov bol problém opačný, teda veľmi rozsiahly text, ktorý nebol vždy práve veľmi reprezentatívny a teda mohlo nastať až pretrénovanie týchto modelov. 
+
+#### Spustenie a použitie 
+
+Celý zdrojový kód programu sa nachádza v súbore typu Jupyter Notebook VINF_Project_Wikipedia.ipynb, ktorý je celý spustiteľný po jednotlivých bunkách. Kód programu je rozdelený do niekoľkých logických častí a je psaný vo forme funkcii, ktoré je potrebné spúšťať za sebou v poradí ako sú v kóde, alebo je potrebné spustiť kód v poslednej časti programu - Spustenie.
+
+V prvej bunke sa nachádzajú knižnice, ktoré je potrebné importovať pre správny bez programu.
+
+Prvom časťou programu je kód na čítanie článkov Wikipédie zo súboru a extrahovanie textov článkov, ktoré sa zapíšu do súboru. Druhú časť tvorí nájdenie infoboxov, anchor textov a kategórii článkov. Tretia časť slúži na inicializáciu kategórii a vytvorenie gazeteera pomocou Datamuse knižnice a Wiki článkov kategórií. Nasleduje časť obsahujúca funkcie na predspracovanie článkov a po nej funkcie na trénovanie a testovanie TF-IDF modelov s vytvorením invertovaného indexu a vyhľadávania nad článkami.  
+
+Poslednú časť tvorí samotné spustenie programu a vyhodnotenie na testovacích, ale aj väčších dátach spolu s testovaním vyhľadávača.
 
 #### Konzultácia č. 3
 
@@ -118,4 +165,24 @@ GitHUb, Jupyter Notebook, Python, PySpark a ďalšie Python knižnice
   * TF-IDF model nad slovami v gazeteeroch
   * Kosínusová podobnosť s kategorickými a testovacími článkami
   * Skúsiť Spark - pyspark na rýchlejšie spracovanie
-  
+
+#### Konzultácia č. 5 
+
+  * Anotovanie testovacej vzorky dát
+  * Testovanie a vyhodnotenie úspešnosti natrénovaných modelov na testovacej vzorke
+  * Vytvoriť jednoduchý index nad všetkými článkami pomocou hash mapy 
+  * Vyhľadávanie nad článkami - nájsť názov článku podľa kategórie a textu článku
+  * Spustenie nad všetkými článkami Wikipédie - nájsť text, extrahovať infobox, anchors, kategórie a odčleniť redirect články
+
+
+#### Konzultácia č. 6 
+
+  * Rozdelenie testovacej vzorky na menšie časti
+  * Spustenie celého procesu na čo najväčšej vzorke dát (ideálne na všetkých) - extrahovanie článkov a z nich text, anchors, infobox, predspracovanie - odstránenie stop slov, normalizácia, tokenizácia, testovanie pomocou modelov, vytvorenie indexu a vyhľadávanie nad nimi
+  * Vylepšenie modelov na základe 5. konzultácie
+
+#### Literatúra 
+
+[1] SHAVARANI, Hassan S.; SEKINE, Satoshi. Multi-class Multilingual Classification of Wikipedia Articles Using Extended Named Entity Tag Set. arXiv preprint arXiv:1909.06502, 2019.
+
+[2] HIGASHINAKA, Ryuichiro, et al. Creating an extended named entity dictionary from Wikipedia. In: Proceedings of COLING 2012. 2012. p. 1163-1178.
